@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Form, Row, Container, Button } from "react-bootstrap";
 
 const FormComponent = () => {
@@ -7,7 +7,12 @@ const FormComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem("note", JSON.stringify({ title, description }));
   };
+
+  useEffect(() => {
+    const noteData = JSON.parse(localStorage.getItem("note"));
+  }, []);
 
   return (
     <Container>
