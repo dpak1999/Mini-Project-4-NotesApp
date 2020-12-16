@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Col, Form, Row, Container, Button } from "react-bootstrap";
 
-const FormComponent = () => {
+const FormComponent = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("note", JSON.stringify({ title, description }));
+
+    props.onSubmit({
+      title: title,
+      description: description,
+    });
+
+    setTitle("");
+    setDescription("");
   };
 
   useEffect(() => {
-    const noteData = JSON.parse(localStorage.getItem("note"));
-  }, []);
+    localStorage.setItem("notes", JSON.stringify({ title, description }));
+  }, [title, description]);
 
   return (
     <Container>
