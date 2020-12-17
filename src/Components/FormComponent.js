@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Form, Row, Container, Button } from "react-bootstrap";
 
 const FormComponent = (props) => {
@@ -16,10 +16,6 @@ const FormComponent = (props) => {
     setTitle("");
     setDescription("");
   };
-
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify({ title, description }));
-  }, [title, description]);
 
   return (
     <Container>

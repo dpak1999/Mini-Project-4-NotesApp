@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import FormComponent from "./FormComponent";
 import NotesList from "./NotesList";
@@ -9,7 +9,15 @@ const ModalComponent = (props) => {
   const addNote = (note) => {
     const newNote = [note, ...notes];
     setNotes(newNote);
+
+    localStorage.setItem("note", JSON.stringify(newNote));
   };
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("note"));
+    setNotes(data);
+  }, []);
+
   return (
     <div>
       <Modal

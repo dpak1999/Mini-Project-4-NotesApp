@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 
 const NotesList = ({ notes }) => {
   const note = notes.map((item) => {
     return (
-      <Col md={6}>
+      <Col md={6} key={Math.random()}>
         <Card className="mt-2">
           <Card.Body>
             <Card.Title>{item.title}</Card.Title>
