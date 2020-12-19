@@ -1,28 +1,10 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import FormComponent from "./FormComponent";
-import NotesList from "./NotesList";
 
 const ModalComponent = (props) => {
-  const [notes, setNotes] = useState([]);
-
-  const addNote = (note) => {
-    const newNote = [note, ...notes];
-    setNotes(newNote);
-
-    localStorage.setItem("note", JSON.stringify(newNote));
-  };
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("note"));
-
-    if (data) {
-      setNotes(data);
-    }
-  }, []);
-
   return (
     <div>
       <Modal
@@ -37,13 +19,12 @@ const ModalComponent = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormComponent onSubmit={addNote} />
+          <FormComponent onSubmit={props.addNote} />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
-      <NotesList notes={notes} />
     </div>
   );
 };

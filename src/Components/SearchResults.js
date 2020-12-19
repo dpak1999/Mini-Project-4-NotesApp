@@ -1,10 +1,10 @@
 /** @format */
 
 import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Container, Col, Card, Row } from "react-bootstrap";
 
-const NotesList = ({ notes }) => {
-  const note = notes.map((item) => {
+const SearchResults = ({ results }) => {
+  const result = results.map((item) => {
     return (
       <Col md={6}>
         <Card className="mt-2">
@@ -16,12 +16,11 @@ const NotesList = ({ notes }) => {
       </Col>
     );
   });
-
   return (
     <Container>
-      <Row>{note}</Row>
+      <Row>{result}</Row>
     </Container>
   );
 };
 
-export default NotesList;
+export default SearchResults;
