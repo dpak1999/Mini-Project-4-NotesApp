@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import FormComponent from "./FormComponent";
