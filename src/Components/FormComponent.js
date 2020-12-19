@@ -1,5 +1,8 @@
+/** @format */
+
 import React, { useState } from "react";
 import { Col, Form, Row, Container, Button } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 
 const FormComponent = (props) => {
   const [title, setTitle] = useState("");
@@ -9,6 +12,7 @@ const FormComponent = (props) => {
     e.preventDefault();
 
     props.onSubmit({
+      id: uuidv4(),
       title: title,
       description: description,
     });
