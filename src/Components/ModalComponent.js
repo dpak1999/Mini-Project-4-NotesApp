@@ -17,7 +17,10 @@ const ModalComponent = (props) => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("note"));
-    setNotes(data);
+
+    if (data) {
+      setNotes(data);
+    }
   }, []);
 
   return (
