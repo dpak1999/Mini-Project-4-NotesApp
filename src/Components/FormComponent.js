@@ -31,6 +31,7 @@ const FormComponent = (props) => {
               <Form.Control
                 type="text"
                 placeholder="Enter Title"
+                required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               ></Form.Control>
@@ -41,6 +42,7 @@ const FormComponent = (props) => {
               <Form.Control
                 type="text"
                 placeholder="Enter Description"
+                required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
