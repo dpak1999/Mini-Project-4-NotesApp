@@ -26,7 +26,7 @@ const HomeComponent = () => {
       setNotes(data);
 
       const result = data.filter(({ title }) =>
-        title.toLowerCase().includes(searchItem)
+        title.toLowerCase().includes(searchItem.toLowerCase())
       );
       setResults(result);
     }
