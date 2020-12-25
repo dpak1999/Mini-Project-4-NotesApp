@@ -5,7 +5,6 @@ import { Button, Container, FormControl } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import "../App.css";
 import NotesList from "./NotesList";
-import SearchResults from "./SearchResults";
 
 const HomeComponent = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -24,13 +23,15 @@ const HomeComponent = () => {
     const data = JSON.parse(localStorage.getItem("note"));
     if (data) {
       setNotes(data);
-
-      const result = data.filter(({ title }) =>
-        title.toLowerCase().includes(searchItem.toLowerCase())
-      );
-      setResults(result);
     }
-  }, [searchItem]);
+  }, []);
+
+  useEffect(() => {
+    const result = notes.filter(({ title }) =>
+      title.toLowerCase().includes(searchItem.toLowerCase())
+    );
+    setResults(result);
+  }, [searchItem, notes]);
 
   return (
     <div>
@@ -54,11 +55,7 @@ const HomeComponent = () => {
         onHide={() => setModalShow(false)}
         addNote={addNote}
       />
-      {searchItem ? (
-        <SearchResults results={results} />
-      ) : (
-        <NotesList notes={notes} />
-      )}
+      <NotesList notes={results} />
     </div>
   );
 };
